@@ -27,6 +27,17 @@ public class ControleAraigneeV2 : MonoBehaviour
         _animator.SetFloat("mouvement", directionInput.magnitude);
     }
 
+void OnAttaque()
+{
+        Debug.Log("Moman d'ataké");
+            _animator.SetBool("attaque",true);
+            Invoke("TerminerAttaque",0.2f);
+        }
+
+        void TerminerAttaque(){
+            _animator.SetBool("attaque",false);
+        }
+
     void FixedUpdate()
     {
         // calculer et appliquer la translation
@@ -44,5 +55,7 @@ public class ControleAraigneeV2 : MonoBehaviour
         }
         // appliquer la vitesse de translation
         _rb.AddForce(mouvement, ForceMode.VelocityChange);
+
+        
     }
 }
